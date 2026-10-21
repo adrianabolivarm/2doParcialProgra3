@@ -6,12 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * Base de datos abstracta de Room (Patrón Singleton).
+ * Base de datos Room abstracta implementando el patrón Singleton.
  */
-@Database(entities = [PostEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ProductEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun postDao(): PostDao
+    abstract fun productDao(): ProductDao
 
     companion object {
         @Volatile
@@ -22,7 +22,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
+                    "market_database"
                 ).build()
                 INSTANCE = instance
                 instance
